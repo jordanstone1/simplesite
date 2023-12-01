@@ -114,6 +114,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NF3WMVLT"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+  function() {
+    // Get the YouTube iframe element
+    var youtubeIframe = document.querySelector('iframe[src*="youtube.com"]');
+
+    if (youtubeIframe) {
+        // Extract the video ID from the iframe source
+        var videoUrl = youtubeIframe.src;
+        var videoIdMatch = videoUrl.match(/(?:embed\/|v=|vi\/|youtu\.be\/|\/videos\/|\/embed\/)([^"&?\/\s]*)/);
+        if (videoIdMatch) {
+            return videoIdMatch[1];
+        }
+    }
+
+    return undefined;
+}
+
 </body>
 
 </html>
